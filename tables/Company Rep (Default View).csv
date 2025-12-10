@@ -1,0 +1,11 @@
+First name,Last name,Title,Firmen,Department,Email (internal),Phone (internal),Email (external),Phone (external),Tasks,Job listings
+Michael,Weber,Mr,TechVision Inc,Human Resources,michael.weber@techvision.com,+1-415-555-0123,hr@techvision.com,+1-415-555-0100,1,3
+Anna,Schmidt,Ms,DataFlow Solutions,Talent Acquisition,anna.schmidt@dataflow.com,+1-617-555-0456,recruiting@dataflow.com,+1-617-555-0400,2,5
+Thomas,Brown,Mr,CloudNine Systems,People Operations,thomas.brown@cloudnine.com,+1-212-555-0789,jobs@cloudnine.com,+1-212-555-0700,1,2
+Julia,Fisher,Ms,GreenTech Industries,HR Management,julia.fisher@greentech.com,+1-310-555-0234,careers@greentech.com,+1-310-555-0200,1,4
+Robert,Meyer,Mr,FinanceHub Corp,Recruitment,robert.meyer@financehub.com,+1-312-555-0567,talent@financehub.com,+1-312-555-0500,2,6
+Laura,Cook,Ms,MediCare Solutions,HR Department,laura.cook@medicare.com,+1-617-555-0890,hr@medicare.com,+1-617-555-0800,1,3
+Stefan,Baker,Mr,AutoMotive Dynamics,Talent Team,stefan.baker@autodynamics.com,+1-313-555-0123,jobs@autodynamics.com,+1-313-555-0100,2,5
+Maria,Hoffman,Ms,FoodTech Innovations,People & Culture,maria.hoffman@foodtech.com,+1-415-555-0456,recruitment@foodtech.com,+1-415-555-0400,1,2
+Andrew,Richards,Mr,EduLearn Platform,HR & Talent,andrew.richards@edulearn.com,+1-617-555-0789,careers@edulearn.com,+1-617-555-0700,3,4
+Sabine,Klein,Ms,RetailMax Group,Recruitment Team,sabine.klein@retailmax.com,+1-212-555-0234,jobs@retailmax.com,+1-212-555-0200,1,7

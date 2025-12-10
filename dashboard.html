@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recruiting Agency Dashboard - Manage jobs, customers, and team">
+    <title>Dashboard - Recruiting Agency</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <nav class="sidebar" role="navigation" aria-label="Main navigation">
+        <button class="nav-icon active" data-view="home" onclick="switchView('home')" aria-label="Home" aria-current="page">
+            <img src="icons/Home filled.svg" alt="" class="icon-svg" aria-hidden="true">
+        </button>
+        <button class="nav-icon" data-view="listings" onclick="switchView('listings')" aria-label="Job Listings">
+            <img src="icons/job listings.svg" alt="" class="icon-svg" aria-hidden="true">
+        </button>
+        <button class="nav-icon" data-view="checklist" onclick="switchView('checklist')" aria-label="Tasks and Checklist">
+            <img src="icons/checklist.svg" alt="" class="icon-svg" aria-hidden="true">
+        </button>
+        <button class="nav-icon" data-view="customers" onclick="switchView('customers')" aria-label="Customer Reviews">
+            <img src="icons/customer.svg" alt="" class="icon-svg" aria-hidden="true">
+        </button>
+        <button class="nav-icon" data-view="library" onclick="switchView('library')" aria-label="Knowledge Hub">
+            <img src="icons/library.svg" alt="" class="icon-svg" aria-hidden="true">
+        </button>
+    </nav>
+
+    <main class="main-content" id="main-content">
+        <header>
+            <h1 id="welcome-text">Welcome 👋, <span id="user-role-display"></span></h1>
+            <div class="user-profile" id="profile-dropdown" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0">
+                <div class="avatar" aria-hidden="true">A</div>
+                <span id="profile-role">Account Manager</span>
+                <span class="dropdown-arrow" aria-hidden="true">▼</span>
+                <div class="role-dropdown" id="role-menu" role="menu" aria-label="Role selection">
+                    <button class="role-option" data-role="account-manager" role="menuitem">Account Manager</button>
+                    <button class="role-option" data-role="marketer" role="menuitem">Marketer</button>
+                    <button class="role-option" data-role="recruiter" role="menuitem">Recruiter</button>
+                    <button class="logout-option" onclick="logout()" role="menuitem">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Home Dashboard View -->
+        <div class="view-container active" id="view-home">
+            <div class="dashboard-grid">
+            <!-- Customer Overview -->
+            <div class="card customer-overview">
+                <div class="card-header">
+                    <h2>Customer Overview</h2>
+                    <button class="see-all-btn" id="customers-see-all" onclick="toggleView('customers')">See all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company name</th>
+                            <th>Recent submission</th>
+                            <th>Quota</th>
+                            <th>Fulfilled</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customer-table">
+                        <tr><td colspan="4">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Team Overview -->
+            <div class="card team-overview">
+                <div class="card-header">
+                    <h2>Team Overview</h2>
+                    <button class="see-all-btn" id="team-see-all" onclick="toggleView('team')">See all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member name</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Vacation days</th>
+                            <th>Workdays</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="team-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Job Listing Overview (5 items) -->
+            <div class="card job-overview-home">
+                <div class="card-header">
+                    <h2>Job listing Overview</h2>
+                    <button class="see-all-btn" onclick="switchView('listings')">View all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Listing name</th>
+                            <th>Status</th>
+                            <th>Published</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobs-overview-table">
+                        <tr><td colspan="3">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        </div>
+
+        <!-- Job Listings View -->
+        <div class="view-container" id="view-listings">
+            <h2 class="view-title">Job listings</h2>
+
+            <!-- Submitted Listings -->
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title submitted-title">Submitted Listings</h3>
+                    <button class="see-all-btn" id="submitted-see-all" onclick="toggleListingView('submitted')">View all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SUBMITTED</th>
+                            <th>JOB TITLE</th>
+                            <th>ASSIGN TO</th>
+                            <th>SELECT TASK</th>
+                            <th>COMPANY</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="submitted-jobs-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Review Jobs -->
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title review-title">Under Review</h3>
+                    <button class="see-all-btn" id="review-see-all" onclick="toggleListingView('review')">View all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SUBMITTED</th>
+                            <th>JOB TITLE</th>
+                            <th>LOCATION</th>
+                            <th>SLOTS</th>
+                            <th>ASSIGNED</th>
+                            <th>DEADLINE</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="review-jobs-table">
+                        <tr><td colspan="7">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Approved Jobs -->
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title approved-title">Approved listings</h3>
+                    <button class="see-all-btn" id="approved-see-all" onclick="toggleListingView('approved')">View all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SUBMITTED</th>
+                            <th>JOB TITLE</th>
+                            <th>LOCATION</th>
+                            <th>SLOTS</th>
+                            <th>ASSIGNED</th>
+                            <th>LAUNCH DATE</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="approved-jobs-table">
+                        <tr><td colspan="7">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Checklist View -->
+        <div class="view-container" id="view-checklist">
+            <h2 class="view-title">Tasks and To Do's</h2>
+
+            <!-- Pending Tasks -->
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title pending-title">Task Management - Pending</h3>
+                    <button class="see-all-btn" id="pending-tasks-see-all" onclick="toggleTaskView('pending')">View all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TITLE TASK</th>
+                            <th>STATUS</th>
+                            <th>ASSIGNED</th>
+                            <th>ATTACHMENT</th>
+                            <th>COMPANY</th>
+                            <th>DEADLINE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pending-tasks-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Completed Tasks -->
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title completed-title">Task Management - Recently completed</h3>
+                    <button class="see-all-btn" id="completed-tasks-see-all" onclick="toggleTaskView('completed')">View all</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TITLE TASK</th>
+                            <th>STATUS</th>
+                            <th>ASSIGNED</th>
+                            <th>ATTACHMENT</th>
+                            <th>COMPANY</th>
+                            <th>DEADLINE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="completed-tasks-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Customers View -->
+        <div class="view-container" id="view-customers">
+            <h2 class="view-title">Reviews from Customers</h2>
+
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title">Submission</h3>
+                    <button class="see-all-btn">Add company</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>COMPANY</th>
+                            <th>RATING</th>
+                            <th>JOB REF</th>
+                            <th>QUALIFIED</th>
+                            <th>UNQUALIFIED</th>
+                            <th>SUBMITTED</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reviews-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title">Detailed Feedback</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>COMPANY</th>
+                            <th>REPRESENTATIVE</th>
+                            <th>POSITION</th>
+                            <th>DATE</th>
+                            <th>RATING</th>
+                            <th>REVIEW</th>
+                        </tr>
+                    </thead>
+                    <tbody id="detailed-reviews-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Library View -->
+        <div class="view-container" id="view-library">
+            <h2 class="view-title">Knowledge Hub</h2>
+
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3 class="table-title">Review files</h3>
+                    <button class="see-all-btn">Add company</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>TEMPLATE</th>
+                            <th>UPDATED BY</th>
+                            <th>ACTIVE</th>
+                            <th>USED BY</th>
+                            <th>LINK TO RESSOURCE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="knowledge-hub-table">
+                        <tr><td colspan="6">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="data.js"></script>
+    <script src="nocodb.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

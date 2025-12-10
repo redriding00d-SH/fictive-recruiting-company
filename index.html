@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recruiting Agency Dashboard - Select your role to continue">
+    <title>Select Your Role - Recruiting Agency Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+    <!-- Loading Overlay (hidden by default) -->
+    <div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite">
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <p class="loading-text">Loading your dashboard...</p>
+    </div>
+
+    <main class="login-container">
+        <h1>Who are you?</h1>
+        <p class="subtitle">Let's customise your experience.</p>
+
+        <div class="role-cards" role="group" aria-label="Role selection">
+            <button class="role-card" onclick="selectRole('account-manager')" aria-label="Select Account Manager role" tabindex="0">
+                <img src="assets/1accountmanager.png" alt="" aria-hidden="true">
+                <h3>Account manager</h3>
+            </button>
+
+            <button class="role-card" onclick="selectRole('marketer')" aria-label="Select Marketer role" tabindex="0">
+                <img src="assets/2marketingmanager.png" alt="" aria-hidden="true">
+                <h3>Marketer</h3>
+            </button>
+
+            <button class="role-card" onclick="selectRole('recruiter')" aria-label="Select Recruiter role" tabindex="0">
+                <img src="assets/3recruitingmanager.png" alt="" aria-hidden="true">
+                <h3>Recruiter</h3>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        function selectRole(role) {
+            localStorage.setItem('userRole', role);
+
+            // Show loading overlay
+            document.getElementById('loading-overlay').style.display = 'flex';
+
+            // Small delay for smooth transition, then navigate
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 600);
+        }
+    </script>
+</body>
+</html>

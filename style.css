@@ -1,0 +1,757 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('fonts/Geist-VariableFont_wght.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+}
+
+/* === LOADING OVERLAY === */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(33, 45, 202, 0.2);
+    border-top-color: #212DCA;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === ANIMATIONS === */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* === LOGIN PAGE === */
+.login-page {
+    background: #000;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.login-container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #999;
+    margin-bottom: 3rem;
+}
+
+.role-cards {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    background: #212DCA;
+    border-radius: 20px;
+    padding: 2rem;
+    width: 280px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: bounceIn 0.6s ease-out backwards;
+}
+
+.role-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.role-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.role-card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+}
+
+.role-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.role-card h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/* === DASHBOARD PAGE === */
+.dashboard-page {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 80px;
+    background: #212DCA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 2rem;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-self: flex-start;
+}
+
+.nav-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.nav-icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-icon.active {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icon-svg {
+    width: 24px;
+    height: 24px;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.nav-icon:hover .icon-svg,
+.nav-icon.active .icon-svg {
+    opacity: 1;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem 3rem;
+    background: #0f0f0f;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.user-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: #1a1a1a;
+    border-radius: 50px;
+    border: 2px solid #2a2a2a;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    color: #ffffff;
+}
+
+.user-profile:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.4);
+    border-color: #3a3a3a;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #212DCA;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.dropdown-arrow {
+    font-size: 0.65rem;
+    color: #666;
+    display: inline-block;
+    width: 10px;
+    transition: transform 0.2s;
+}
+
+.user-profile.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.role-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                0 8px 20px rgba(0, 0, 0, 0.4),
+                0 12px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    min-width: 200px;
+    z-index: 100;
+}
+
+.user-profile.active .role-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.role-option {
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-bottom: 1px solid #2a2a2a;
+    color: #e0e0e0;
+}
+
+.role-option:last-child {
+    border-bottom: none;
+}
+
+.role-option:hover {
+    background: #2a2a2a;
+}
+
+.role-option.active {
+    background: #212DCA;
+    color: white;
+    font-weight: 600;
+}
+
+.logout-option {
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-top: 2px solid #3a3a3a;
+    color: #ff6b6b;
+    font-weight: 500;
+}
+
+.logout-option:hover {
+    background: #2a2a2a;
+    color: #ff8787;
+}
+
+.view-container {
+    display: none;
+}
+
+.view-container.active {
+    display: block;
+}
+
+.view-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.table-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+}
+
+.live-title {
+    color: #93c5fd;
+}
+
+.approved-title {
+    color: #6ee7b7;
+}
+
+.review-title {
+    color: #fcd34d;
+}
+
+.pending-title {
+    color: #fcd34d;
+}
+
+.completed-title {
+    color: #6ee7b7;
+}
+
+.submitted-title {
+    color: #93c5fd;
+}
+
+.dashboard-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 2fr 1fr;
+}
+
+.card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.see-all-btn {
+    background: transparent;
+    border: 2px solid #3a3a3a;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #a0a0a0;
+}
+
+.see-all-btn:hover {
+    background: #212DCA;
+    border-color: #212DCA;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(33, 45, 202, 0.2),
+                0 4px 12px rgba(33, 45, 202, 0.3);
+}
+
+/* Job Overview Home - Top Priority */
+.job-overview-home {
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+/* Customer Overview - Full Width */
+.customer-overview {
+    grid-column: 1 / -1;
+    grid-row: 2;
+}
+
+/* Team Overview - Full Width */
+.team-overview {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    text-align: left;
+    padding: 1rem 0.75rem;
+    border-bottom: 2px solid #2a2a2a;
+    font-weight: 600;
+    color: #808080;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tbody td {
+    padding: 1.25rem 0.75rem;
+    border-bottom: 1px solid #2a2a2a;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+
+tbody tr {
+    transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+    background: #252525;
+}
+
+.status-badge {
+    display: block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    width: 100%;
+}
+
+.status-badge.live {
+    background: #1e3a8a;
+    color: #93c5fd;
+}
+
+.status-badge.approved {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+.status-badge.review {
+    background: #78350f;
+    color: #fcd34d;
+}
+
+.status-badge.submitted {
+    background: #9a3412;
+    color: #fb923c;
+}
+
+/* Edit Icon */
+.edit-icon {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    font-size: 1rem;
+}
+
+.edit-icon:hover {
+    opacity: 1;
+}
+
+/* Job Listings Table Adjustments */
+#view-listings thead th:last-child {
+    width: 50px;
+    text-align: center;
+}
+
+#view-listings tbody td:last-child {
+    text-align: center;
+    padding-right: 1.5rem;
+}
+
+/* Active/Inactive Badges */
+.active-badge {
+    background: #22c55e !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+.inactive-badge {
+    background: #6b7280 !important;
+    color: #e5e7eb !important;
+}
+
+/* Resource Link */
+.resource-link {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.resource-link:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+/* Progress Badge */
+.progress-badge {
+    background: #22d3ee !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* Assignment Dropdown */
+.assign-dropdown {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    color: #e0e0e0;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 150px;
+}
+
+.assign-dropdown:hover {
+    background: #353535;
+    border-color: #4a4a4a;
+}
+
+.assign-dropdown:focus {
+    outline: none;
+    border-color: #212DCA;
+    box-shadow: 0 0 0 2px rgba(33, 45, 202, 0.2);
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 0.5rem;
+}
+
+.edit-btn {
+    background: #212DCA;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #1a24a8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(33, 45, 202, 0.3);
+}
+
+.delete-btn {
+    background: #991b1b;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #7f1d1d;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(153, 27, 27, 0.3);
+}
+
+.create-task-btn {
+    background: #059669;
+    color: white;
+}
+
+.create-task-btn:hover {
+    background: #047857;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(5, 150, 105, 0.3);
+}
+
+/* Team Status Badges */
+.team-status {
+    padding: 0.3rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-active {
+    background: #059669;
+    color: #ffffff;
+}
+
+.status-leave {
+    background: #9a3412;
+    color: #fb923c;
+}
+
+/* Review Text */
+.review-text {
+    max-width: 500px;
+    line-height: 1.6;
+    color: #d0d0d0;
+    font-size: 0.95rem;
+}
+
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(33, 45, 202, 0.2);
+    border-top-color: #212DCA;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Retry Button */
+.retry-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background: #212DCA;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.retry-btn:hover {
+    background: #1a24a8;
+    transform: translateY(-1px);
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1a1a1a;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+                0 8px 24px rgba(0, 0, 0, 0.3);
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 10000;
+    max-width: 400px;
+    border-left: 4px solid #212DCA;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast-success {
+    border-left-color: #059669;
+}
+
+.toast-error {
+    border-left-color: #dc2626;
+    background: #1f1515;
+}
+
+.toast-warning {
+    border-left-color: #f59e0b;
+}
+
+/* Focus Styles for Accessibility */
+button:focus,
+select:focus,
+.nav-icon:focus,
+.role-card:focus {
+    outline: 2px solid #212DCA;
+    outline-offset: 2px;
+}
+
+/* Skip to Content Link (Accessibility) */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #212DCA;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    z-index: 10001;
+    border-radius: 0 0 8px 0;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
