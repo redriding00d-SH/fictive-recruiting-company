@@ -170,6 +170,9 @@ body {
     cursor: pointer;
     border-radius: 10px;
     transition: all 0.2s;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 .nav-icon:hover {
