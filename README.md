@@ -4,18 +4,16 @@ A minimal, role-based dashboard for recruiting agencies with NocoDB backend inte
 
 This is a concept for a low-code/no-code solution based on a Whimsical mindmap (see assets folder). Built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools.
 
-<<<<<<< HEAD
 ## Screenshots
 
 ### Role Selection
 ![Role Selection](temp/Login.png)
 
 ### Dashboard Home
-![Dashboard](temp/Home%20Screen.png)
+![Dashboard](temp/home.png)
 =======
 -> [Mindmap](assets/mindmap.png)
 -> [Figma Design](https://www.figma.com/proto/zYYXBP4raPeYrBNZqvXLWQ/Ohne-Namen?node-id=46-344&t=87ymcOr0WNYcJWX4-1)
->>>>>>> 8f6f985b6bf4dc270df9fdf1dd5f888217fa8bc9
 
 ## How to Use
 
