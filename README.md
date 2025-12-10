@@ -6,14 +6,17 @@ This is a concept for a low-code/no-code solution based on a Whimsical mindmap (
 
 ## Screenshots
 
+## Concept
+![Mindmap](assets/mindmap.png)
+
 ### Role Selection
 ![Role Selection](temp/Login.png)
 
 ### Dashboard Home
 ![Dashboard](temp/home.png)
 =======
--> [Mindmap](assets/mindmap.png)
--> [Figma Design](https://www.figma.com/proto/zYYXBP4raPeYrBNZqvXLWQ/Ohne-Namen?node-id=46-344&t=87ymcOr0WNYcJWX4-1)
+
+-> [Go to Figma Design](https://www.figma.com/proto/zYYXBP4raPeYrBNZqvXLWQ/Ohne-Namen?node-id=46-344&t=87ymcOr0WNYcJWX4-1)
 
 ## How to Use
 
